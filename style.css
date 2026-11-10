@@ -3,6 +3,8 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    color: #2b2b2b;
+    background-color: #ffffff;
 }
 
 .site-header {
@@ -10,7 +12,14 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 16px 20px;
-    background-color: #f4f4f4;
+    background-color: #2b2b2b;
+    color: #ffffff;
+}
+
+.logo {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
 .menu {
@@ -20,11 +29,11 @@ body {
 
 .menu a {
     text-decoration: none;
-    color: #333;
+    color: #ffffff;
 }
 
 .menu a:hover {
-    color: #4426FF;
+    color: #84cc16;
 }
 
 main {
@@ -38,5 +47,40 @@ section {
 
 footer {
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #2b2b2b;
+    color: #ffffff;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.card {
+    flex: 1 1 260px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #f9f9f9;
+}
+
+.card--highlight {
+    border: 2px solid #84cc16;
+    background-color: #ecfccb;
+}
+
+.card--highlight span {
+    display: inline-block;
+    background-color: #84cc16;
+    color: #2b2b2b;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.card_price {
+    font-weight: bold;
 }
