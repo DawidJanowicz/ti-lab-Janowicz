@@ -1,15 +1,6 @@
 <?php
 $firma = 'Szprycha';
 $rok = date('Y');
-
-$cennik = [
-    ['nazwa' => 'Przegląd podstawowy', 'cena' => 120],
-    ['nazwa' => 'Serwis pełny', 'cena' => 250],
-    ['nazwa' => 'Centrowanie koła', 'cena' => 60],
-    ['nazwa' => 'Wymiana dętki', 'cena' => 40],
-    ['nazwa' => 'Regulacja przerzutek', 'cena' => 50]
-    //['nazwa' => 'Mycie roweru', 'cena' => 30]
-];
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -22,16 +13,7 @@ $cennik = [
 </head>
 <body>
     <header class="site-header">
-        <a class="logo" href="#">
-            <svg viewBox="0 0 120 64" width="72" height="38" role="img" aria-labelledby="logo-tytul">
-                <title id="logo-tytul">Szprycha</title>
-                <circle cx="28" cy="42" r="18" fill="none" stroke="#84cc16" stroke-width="5"/>
-                <circle cx="92" cy="42" r="18" fill="none" stroke="#84cc16" stroke-width="5"/>
-                <polyline points="28,42 48,14 80,14 92,42" fill="none" stroke="#ffffff" stroke-width="5" stroke-linejoin="round"/>
-                <polyline points="48,14 60,42 80,14" fill="none" stroke="#ffffff" stroke-width="5" stroke-linejoin="round"/>
-            </svg>
-            <span>Szprycha</span>
-        </a>
+        <p class="logo">Szprycha</p>
         <button class="menu-toggle" aria-expanded="false">Menu</button>
         <nav class="menu">
             <a href="#uslugi">Usługi</a>
@@ -73,12 +55,26 @@ $cennik = [
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($cennik as $usluga): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($usluga['nazwa']) ?></td>
-                            <td class="num"><?= $usluga['cena'] ?> zł</td>
-                        </tr>
-                    <?php endforeach; ?>
+                    <tr>
+                        <td>Przegląd podstawowy</td>
+                        <td class="num">120 zł</td>
+                    </tr>
+                    <tr>
+                        <td>Serwis pełny</td>
+                        <td class="num">250 zł</td>
+                    </tr>
+                    <tr>
+                        <td>Centrowanie koła</td>
+                        <td class="num">60 zł</td>
+                    </tr>
+                    <tr>
+                        <td>Wymiana dętki</td>
+                        <td class="num">40 zł</td>
+                    </tr>
+                    <tr>
+                        <td>Regulacja przerzutek</td>
+                        <td class="num">50 zł</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
