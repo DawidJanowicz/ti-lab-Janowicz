@@ -1,6 +1,7 @@
 <?php
 $firma = 'Szprycha';
 $rok = date('Y');
+$imie = $_GET['imie'] ?? 'Gościu';
 
 $cennik = [
     ['nazwa' => 'Przegląd podstawowy', 'cena' => 120],
@@ -10,6 +11,13 @@ $cennik = [
     ['nazwa' => 'Regulacja przerzutek', 'cena' => 50],
     // ['nazwa' => 'Mycie roweru', 'cena' => 30]
 ];
+
+$maxCena = max(array_column($cennik, 'cena'));
+$barWidth = 70;
+$gap = 20;
+$chartHeight = 200;
+$chartBottom = 240;
+$startX = 60;
 ?>
 <!DOCTYPE html>
 <html lang="pl">
@@ -41,6 +49,8 @@ $cennik = [
     </header>
 
     <main>
+        <p>Cześć, <?= htmlspecialchars($imie) ?>!</p>
+
         <section id="uslugi">
             <h1>Nasze Usługi</h1>
             <div class="cards">
@@ -81,6 +91,25 @@ $cennik = [
                     <?php endforeach; ?>
                 </tbody>
             </table>
+        </section>
+
+        <section id="wykres">
+            <h2>Porównanie cen</h2>
+            <svg viewBox="0 0 650 330" width="100%" style="max-width: 650px;" role="img" aria-labelledby="wykres-tytul">
+                <title id="wykres-tytul">Wykres porównania cen usług</title>
+                <line x1="20" y1="<?= $chartBottom ?>" x2="630" y2="<?= $chartBottom ?>" stroke="#2b2b2b" stroke-width="2"/>
+                <?php foreach ($cennik as $i => $usluga): ?>
+                    <?php
+                        $barHeight = ($usluga['cena'] / $maxCena) * $chartHeight;
+                        $x = $startX + $i * ($barWidth + $gap);
+                        $y = $chartBottom - $barHeight;
+                        $cx = $x + $barWidth / 2;
+                    ?>
+                    <rect x="<?= $x ?>" y="<?= $y ?>" width="<?= $barWidth ?>" height="<?= $barHeight ?>" fill="#84cc16"/>
+                    <text x="<?= $cx ?>" y="<?= $y - 6 ?>" text-anchor="middle" font-size="13" fill="#2b2b2b"><?= $usluga['cena'] ?> zł</text>
+                    <text x="<?= $cx ?>" y="<?= $chartBottom + 15 ?>" text-anchor="end" font-size="11" fill="#2b2b2b" transform="rotate(-45 <?= $cx ?> <?= $chartBottom + 15 ?>)"><?= htmlspecialchars($usluga['nazwa']) ?></text>
+                <?php endforeach; ?>
+            </svg>
         </section>
     </main>
 
